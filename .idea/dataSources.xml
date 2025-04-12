@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="playground_sp1_20241115_8957eb1d62@rc1b-ibh8zlbmuynmtr4i.mdb.yandexcloud.net" uuid="1cce331c-2188-4e7c-8321-f1f8e9fa61df">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://rc1b-ibh8zlbmuynmtr4i.mdb.yandexcloud.net:6432/playground_sp1_20241115_8957eb1d62</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
