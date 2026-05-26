@@ -12,33 +12,9 @@ A handicraft marketplace acquired a competitor website. The task is to integrate
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        SOURCE SYSTEMS                           │
-├───────────┬───────────┬───────────┬─────────────────────────────┤
-│  Source 1 │  Source 2 │  Source 3 │  External Source (NEW)      │
-│  (Wide)   │ (2 tables)│ (3 tables)│  craft_products_orders      │
-│           │           │           │  customers                  │
-└─────┬─────┴─────┬─────┴─────┬─────┴──────────────┬──────────────┘
-      │           │           │                    │
-      └───────────┴─────┬─────┴────────────────────┘
-                        ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                     DWH LAYER (PostgreSQL)                      │
-├─────────────────┬─────────────────┬─────────────────────────────┤
-│   d_craftsman   │   d_customer    │         d_product           │
-│   (Dimension)   │   (Dimension)   │        (Dimension)          │
-├─────────────────┴─────────────────┴─────────────────────────────┤
-│                        f_order (Fact)                           │
-└─────────────────────────────┬───────────────────────────────────┘
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                      DATAMART LAYER                             │
-├────────────────────────────┬────────────────────────────────────┤
-│  craftsman_report_datamart │  customer_report_datamart (NEW)    │
-│      (existing)            │     (built in this project)        │
-└────────────────────────────┴────────────────────────────────────┘
-```
+![DWH Architecture](images/architecture.png)
+
+*Data flows from 4 source systems through SQL-based ETL pipelines into the Data Warehouse, then aggregated into analytical datamarts.*
 
 ## Tech Stack
 
@@ -73,6 +49,8 @@ A handicraft marketplace acquired a competitor website. The task is to integrate
 ## Project Structure
 
 ```
+├── images/
+│   └── architecture.png                      # DWH architecture diagram
 ├── scripts/
 │   ├── DDL_customer_report_datamart.sql      # Customer datamart schema
 │   ├── DDL_load_dates_craftsman_report_datamart.sql  # Incremental load tracking
